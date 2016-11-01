@@ -20,24 +20,22 @@
     </style>
 
     <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            var _handleFileDrop = function(files, event) {
+        class myUploader extends React.Component
+        {
+            _handleFileDrop = function(files, event) {
                 console.log(files, event);
             };
-
-            var styles = {border: "1px solid black", width: 600, color: "black", padding: 20};
-
-            var myUploader = React.createElement(
-                "div", {className: "my-uploader", style: styles},
-                    "This is the \".my-uploader\" div. Try dragging a file!",
-                    React.createElement(
-                        ReactFileDrop, {onDrop: _handleFileDrop, frame: document, dropEffect: "copy"},
-                            "Drop some files here!"
-                    )
-            );
-
-            React.render(myUploader, document.getElementById("demo-contents"))
-        });
+        
+            render() {
+                return <div>
+                    <ReactFileDrop onDrop={this._handlefileDrop}>
+                        Drop dome files here!
+                    </ReactFileDrop>
+                    </div>
+            }
+        }
+        
+        ReactDOM.render(<myUploader>,document.getElementbyId("demo-contents'));
     </script>
 </head>
 <body>
